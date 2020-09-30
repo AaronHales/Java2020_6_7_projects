@@ -11,12 +11,14 @@ public class Contacts {
 	byte b_day;
 	int b_year;
 	boolean work_or_personal;
+	
 
 	public Contacts() {
+		
 		name = "Lydia";
 		phone_number = 5555555555L;
 		email = "something@anywhere.com";
-		address = "6 Rock lane";
+		address = "6 Somewhere Over Rainbow Rd";
 		b_month = 20;
 		b_day = 7;
 		b_year = 2013;
