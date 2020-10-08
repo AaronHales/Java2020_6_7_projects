@@ -42,11 +42,19 @@ public class ch6_2 {
 		*/
 		
 		System.out.println("enter a number");
-		String test2 = input.nextLine();
+		int test2 = input.nextInt();
+		String test5 = input.next();
+		int test3 = input.nextInt();
+		int test4 = input.nextInt();
 		
-		int int2 = Integer.parseInt(test2);
-		int2+=42;
-		System.out.println(int2);
+		
+		//int int2 = Integer.parseInt(test2);
+		//int2+=42;
+		System.out.println(test2);
+		System.out.println(test5);
+		System.out.println(test3);
+		System.out.println(test4);
+		
 		
 		
 	}
