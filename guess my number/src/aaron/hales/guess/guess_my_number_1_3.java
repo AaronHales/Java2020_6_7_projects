@@ -1,11 +1,12 @@
 package aaron.hales.guess;
 
+// imports
 import java.util.Random;
 import java.util.Scanner;
 
-public class guess_number_1_2 {
+public class guess_my_number_1_3 {
 
-	public guess_number_1_2() {
+	public guess_my_number_1_3() {
 		Scanner input = new Scanner(System.in);
 		Random random = new Random();
 		boolean win = false;
@@ -54,16 +55,12 @@ public class guess_number_1_2 {
 				max_range = 1000;
 				total_guess = 1;
 				break;
-		}
+		} // switch result
 		
 		
 		int comp_num = random.nextInt(max_range)+1;  // picking the random number from 0 to value in () but not including that number
 		int guess;
-		
-		
-		
-		
-		
+		int guess_count = 0;
 		
 		System.out.println("Welcome to the Guess My Number game");
 		System.out.println("I'm thinking of a number between 1 and " + max_range);
@@ -73,9 +70,11 @@ public class guess_number_1_2 {
 		
 		String guess_text = String.format("Pick a number between 1 and %s", max_range);
 		
-		int guess_count = 0;
 		
-		while ((guess_count != total_guess) && (win == false)) {
+		
+		System.out.println(comp_num);
+		do {
+			String guess_count_txt = String.format("You have %s guess remaining\n", (total_guess-guess_count-1));
 			// guess 1
 			System.out.println(guess_text);
 			if (input.hasNextInt()) {
@@ -85,42 +84,48 @@ public class guess_number_1_2 {
 					System.out.println("the number was: " + comp_num);
 					System.out.println("YOU WIN!");
 					*/
-					win = true; // sets win to true so it runs bottom if statement
+					win = true; // sets win to true so it runs the bottom if statement
 				} // if guess == comp_num
 			
 				else if (guess < comp_num) {
-					System.out.println(guess + " was too small\n");
-				} // else if
+					System.out.println(guess + " was too small");
+					System.out.println(guess_count_txt);
+					win = false;
+				} // else if guess < comp_num
 			
 				else {
-					System.out.println(guess + " was too large\n");
+					System.out.println(guess + " was too large");
+					System.out.println(guess_count_txt);
+					win = false;
 				} // else
 			} // has next
 		
 			else {
 				System.out.println("Not a good value you lost a guess");
-				System.out.println("Guess must be a number\n");
-				input.nextLine();
+				System.out.println("Guess must be a number");
+				System.out.println(guess_count_txt);
+				win = false;
 			} //else
+			input.nextLine();
 			guess_count++;
-		} // while loop
+		}while ((guess_count != total_guess) && (win == false)); // do while loop
 		
-		if (win == true) {
-			System.out.println("the number was: " + comp_num);
+		if ((win == true) && (guess_count == total_guess)) {
 			System.out.println("YOU WIN!");
+			System.out.println("The number was: " + comp_num);
 		} // if win == true 
 		else {
 			System.out.println("You Lost");
 			System.out.println("The number was: " + comp_num);
-		}
+		} // else
 
 		
 		input.close();
-	}
+	} // public guess_my_number_1_3()
 
 	public static void main(String[] args) {
-		new guess_number_1_2();
+		new guess_my_number_1_3();
 
-	}
+	} // public static void main(String[] args)
 
 }
