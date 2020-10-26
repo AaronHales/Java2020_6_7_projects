@@ -58,7 +58,9 @@ public class Ch7_Act {
 			factorial = factorial * index;
 			index++; // increases by one
 		} while (index <= user_num)
+		System.out.println("do-while() loop result: " + factorial);
 		
+		input.close(); // closes Scanner
 	}
 
 	
