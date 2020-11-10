@@ -205,6 +205,58 @@ public class TicTacToeAi {
 		return null;
 	}
 	
+	public int comp_move(String[] board, String EMPTY, String TIE) {
+		String[] test_board = new String[9];
+		// creates test board
+		for (int i = 0; i < 9; i++) {
+			test_board[i] = board[i];
+		}
+		int[] best_moves = {4, 1, 3, 2, 6, 0, 5, 7, 8};
+		int[] legalmoves = legal_moves(board,9,EMPTY);
+		// checking if any of the legal moves the computer can win with
+		for (int move: legalmoves) {
+			if (move != -1) {
+				test_board[move] = computer;
+				String win = check_winner(test_board, EMPTY, TIE);
+				if (win.equals(computer)) {
+					return move;
+				}
+			}
+			test_board[move] = EMPTY;
+		}
+		
+		
+		// if human can win
+		for (int move: legalmoves) {
+			if (move != -1) {
+				test_board[move] = human;
+				String win = check_winner(test_board, EMPTY, TIE);
+				if (win.equals(human)) {
+					return move;
+				}
+			}
+			test_board[move] = EMPTY;
+		}
+		
+		// choose best move
+		for (int move:best_moves) {
+			boolean inarray = contains(legalmoves, move);
+				if (inarray) {
+					return move;
+				}
+			}
+		return best_moves[0];
+	}
+	
+	public boolean contains(int[] array, int key) {
+		for (int i: array) {
+			if (i == key) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	//////////////////////////////////////////////////////////////////
 	
 	// build games
@@ -231,7 +283,7 @@ public class TicTacToeAi {
 				board[move] = human;
 			}
 			else {
-				move = human_move(board, NUM_SQUARES, EMPTY);
+				move = comp_move(board, EMPTY, TIE);
 				board[move] = computer;
 			}
 			display_board(board);
