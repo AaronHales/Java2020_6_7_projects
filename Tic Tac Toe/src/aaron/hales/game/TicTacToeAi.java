@@ -4,6 +4,22 @@ package aaron.hales.game;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// Changes to be made 11/12 fixed my issues
+
+/////////////////////////////////////////////////////////////////
+// was getting null point exception
+// need to fix check winner to not return null and change to ""
+// change win to ""
+// change game loop to check for ""
+/////////////////////////////////////////////////////////////////
+// was getting a -1 out of range exception
+// add checks in computer move to check for -1
+// it will require an if and else if
+// if move != -1 do everything like normal
+// else if move == -1 continue
+// clear move if it was not -1
+/////////////////////////////////////////////////////////////////
+
 public class TicTacToeAi {
 
 	Scanner input = new Scanner(System.in);
@@ -55,7 +71,7 @@ public class TicTacToeAi {
 				if (!(num_input >= low && num_input <= high)) {
 					System.out.println("\n");
 					System.out.println("-------------------------------------------------");
-					System.out.println("Invalid input: re-enter square number: ");
+					System.out.println("Invalid input. re-enter square number: ");
 					display_board(board);
 					continue;
 				}
@@ -66,7 +82,7 @@ public class TicTacToeAi {
 			}catch (InputMismatchException e) {
 				System.out.println("\n");
 				System.out.println("-------------------------------------------------");
-				System.out.println("Invalid input: re-enter square number: ");
+				System.out.println("Invalid input. re-enter square number: ");
 				display_board(board);
 				input.nextLine();
 				continue;
@@ -202,7 +218,7 @@ public class TicTacToeAi {
 				return TIE;
 			}
 		}
-		return null;
+		return "";
 	}
 	
 	public int comp_move(String[] board, String EMPTY, String TIE) {
@@ -211,8 +227,9 @@ public class TicTacToeAi {
 		for (int i = 0; i < 9; i++) {
 			test_board[i] = board[i];
 		}
-		int[] best_moves = {4, 1, 3, 2, 6, 0, 5, 7, 8};
+		int[] best_moves = {4, 2, 3, 1, 6, 0, 5, 7, 8};
 		int[] legalmoves = legal_moves(board,9,EMPTY);
+		
 		// checking if any of the legal moves the computer can win with
 		for (int move: legalmoves) {
 			if (move != -1) {
@@ -222,9 +239,11 @@ public class TicTacToeAi {
 					return move;
 				}
 			}
+			else if (move == -1) {
+				continue;
+			}
 			test_board[move] = EMPTY;
 		}
-		
 		
 		// if human can win
 		for (int move: legalmoves) {
@@ -234,6 +253,9 @@ public class TicTacToeAi {
 				if (win.equals(human)) {
 					return move;
 				}
+			}
+			else if (move == -1) {
+				continue;
 			}
 			test_board[move] = EMPTY;
 		}
@@ -267,7 +289,7 @@ public class TicTacToeAi {
 		String TIE = "TIE";
 		int NUM_SQUARES = 9;
 		int move;
-		String win = null;
+		String win = "";
 
 		// game setup
 		intro(); // intro to game
@@ -277,7 +299,7 @@ public class TicTacToeAi {
 		System.out.println("-------------------------------------------------");
 		String turn = "X";
 		display_board(board);
-		while (win == null) {
+		while (win == "") {
 			if (turn == human) {
 				move = human_move(board, NUM_SQUARES, EMPTY);
 				board[move] = human;
@@ -285,12 +307,23 @@ public class TicTacToeAi {
 			else {
 				move = comp_move(board, EMPTY, TIE);
 				board[move] = computer;
+				System.out.println("-------------------------------------------------");
+				System.out.println("Computer placed in square: " + move);
 			}
 			display_board(board);
 			win = check_winner(board, EMPTY, TIE);
 			turn = next_turn(turn);
 		}
-		System.out.println(win);
+		System.out.println("The winner is: " + win + "!");
+		if (win == human) {
+			System.out.println("Congratulations Human, You beat me. It was a long hard fight.");
+		}
+		else if (win == computer) {
+			System.out.println("I outsmarted you Human, you need to try harder and think ahead.\nBetter luck next time!");
+		}
+		else if (win == TIE) {
+			System.out.println("Human, we had a great fight, but neither of us won. We were evenly wise in our decisions, I will continue train.");
+		}
 		
 		// testing
 		/*
