@@ -115,11 +115,11 @@ public class TicTacToeAi {
 	
 	public void display_board(String[] board) {
 		System.out.println("\n\t\t+-----------+");
-		System.out.println("\t\t| " + board[0] + " | " + board[1] +" | " + board[2] + " |" );
+		System.out.println("\t\t| " + board[0] + " | " + board[1] + " | " + board[2] + " |" );
 		System.out.println("\t\t|-----------|");
-		System.out.println("\t\t| " + board[3] + " | " + board[4] +" | " + board[5] + " |" );
+		System.out.println("\t\t| " + board[3] + " | " + board[4] + " | " + board[5] + " |" );
 		System.out.println("\t\t|-----------|");
-		System.out.println("\t\t| " + board[6] + " | " + board[7] +" | " + board[8] + " |" );
+		System.out.println("\t\t| " + board[6] + " | " + board[7] + " | " + board[8] + " |" );
 		System.out.println("\t\t+-----------+");
 	}
 	

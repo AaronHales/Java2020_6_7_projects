@@ -1,0 +1,2 @@
+an attribute is what a class are
+a method is what a class can do
