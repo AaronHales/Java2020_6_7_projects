@@ -1,17 +1,12 @@
 package aaron.hales.car;
 import java.util.Scanner;
-
 import aaron.hales.carcomponents.*;
 
-public class Car {
-	
-	public String color;
-	public int num_doors;
-	public String door_type;
-	public int num_wheels;
-	public String brand;
-	public long hardware;
-	public double price;
+public class Car extends Vehicle{
+	String color;
+	int num_doors;
+	String door_type;
+	long hardware;
 	Engine engine = new Engine();
 
 	public Car() {
@@ -21,13 +16,9 @@ public class Car {
 		color = input.nextLine();
 		
 		System.out.print("\nenter number of doors");
-		try {
-			num_doors = input.nextInt();
-		}
-		catch (java.lang.Exception ex) {
-			String error = ex.getMessage();
-			System.out.println("Please enter a valid number " + error);
-		}
+		num_doors = input.nextInt();
+		price = 250000.00;
+		brand = "chevy";
 		
 		
 		
@@ -43,6 +34,9 @@ public class Car {
 		else {
 			System.out.println("I'm driving");
 		}
+	}
+	public void start() {
+		System.out.print("You started the car.");
 	}
 
 }
