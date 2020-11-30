@@ -15,9 +15,10 @@ public class Car extends Vehicle{
 		System.out.print("Enter car color: ");
 		color = input.nextLine();
 		
-		System.out.print("\nenter number of doors");
+		System.out.print("\nEnter number of doors: ");
 		num_doors = input.nextInt();
-		price = 250000.00;
+		price = 60000.00;
+		setPrice(price);
 		brand = "chevy";
 		
 		
