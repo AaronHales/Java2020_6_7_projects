@@ -17,7 +17,7 @@ public class ParentClass {
 	}
 	
 	public void speak(String message) {
-		System.out.print(message);
+		System.out.println(message);
 	}
 	
 	public void run() {
@@ -41,13 +41,14 @@ public class ParentClass {
 			System.out.println("Something went wrong\n" + e);
 		}
 		if (password.equals(my_password)) {
+			input.close();
 			return ethnicity;
 		}
 		else {
 			System.out.println("The password is incorrect");
+			input.close();
 			return "You are not permitted";
 		}
-		
 	}
 
 	public String getHairColor() {
