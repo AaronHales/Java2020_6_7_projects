@@ -4,13 +4,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Student {
-	
+	Scanner input = new Scanner(System.in);
+	static int total_students;
 	private String name;
 	private String idnum;
 	private long lunch_num;
 	private double gpa;
 	private int grade;
-	private Classes[] classes;
+	private Classes[] classes = new Classes[10];
 	private String bday;
 	private String health;
 	private String address;
@@ -18,6 +19,7 @@ public class Student {
 	private String phone;
 	
 	private void pickClasses() {
+		
 		String[] class_list = {"Math",
 				"English",
 				"History",
@@ -37,10 +39,23 @@ public class Student {
 				"Wood_Shop",
 				"Metal_Shop",
 				"A_plus"};
+		
 		class_list[0] = "Math";
 		for (int i = 0; i < 19; i++) {
 			System.out.println(class_list[i]);
 		}
+		System.out.println("What class would you like for Period 1");
+		String inputclass = input.nextLine();
+		if (inputclass.equals("math")) {
+			classes[0] = Classes.Math;
+		}
+		else if (inputclass.equals("english")) {
+			classes[0] = Classes.English;
+		}
+		else {
+			classes[0] = Classes.Programming_Java;
+		}
+		
 		
 	}
 
@@ -57,12 +72,14 @@ public class Student {
 		this.address = address;
 		this.email = email;
 		this.phone = phone;
+		total_students++;
 	}
 
 	public Student(double gpa, int grade) {
 		super();
 		this.gpa = gpa;
 		this.grade = grade;
+		total_students++;
 	}
 	
 	private String genId() {
@@ -102,7 +119,7 @@ public class Student {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter your name");
 		setName(input.nextLine());
-		System.out.println("Enter your birthday (DD/MM/YYYY)");
+		System.out.println("Enter your birthday (MM/DD/YYYY)");
 		setBday(input.nextLine());
 		System.out.println("Enter your GPA");
 		setGpa(input.nextDouble());
@@ -120,6 +137,7 @@ public class Student {
 		setPhone(input.nextLine());
 		setLunch_num(genLunchnum(this.idnum, this.grade));
 		pickClasses();
+		total_students++;
 		
 		input.close();
 	}
