@@ -26,6 +26,14 @@
 
 import java.text.NumberFormat;
 
+/*
+ * Java Programming
+ * chapter 11 Activity: Let's Go Racing!
+ * Activity
+ * aaron.hales
+ * Dec 10, 2020
+ */
+
 public class RaceTrack
 {
 
@@ -35,7 +43,7 @@ public class RaceTrack
 		// car1, car2, and car3 below.  Use constructor parameters
 		// to give each car a unique name, maximum speed, and acceleration.
 		RaceCar car1 = new RaceCar("BOB", 4.0, 2.0);
-		RaceCar car2 = new RaceCar("Joey", 6.9, 3.0);
+		RaceCar car2 = new RaceCar("Jo Jo", 6.9, 3.0);
 		RaceCar car3 = new RaceCar("Who", 9.9, 4.9);
 
 		// STUDENT does not need to modify anything below this line!
