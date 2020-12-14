@@ -2,7 +2,7 @@ package aaron.hales.chapter12.gui;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.time.LocalDateTime;
+import java.util.Calendar;
 
 import javax.swing.*;
 
@@ -12,10 +12,7 @@ public class ButtonClick  implements ActionListener{
 	JLabel instruct_lbl;
 	JButton click_bttn;
 	int clicks;
-	int width;
-	int x_loc;
-	int height;
-	int y_loc;
+	int fontsize = 12;
 	
 	public ButtonClick() {
 		mainFrame = new JFrame();
@@ -51,24 +48,22 @@ public class ButtonClick  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		clicks++;
-		int fontsize = 12;
 		click_bttn.setText("Clicks: " + clicks);
 		if (clicks % 10 == 0) {
-			fontsize += 2;
-			click_bttn.setFont(new Font("Dialog", Font.PLAIN, fontsize));
-			if (clicks > 25) {
-				mainFrame.getContentPane().setBackground(Color.green);
-			}
-			if (clicks > 50) {
-				mainFrame.getContentPane().setBackground(Color.yellow);
-			}
-			if (clicks > 75) {
-				mainFrame.getContentPane().setBackground(Color.ORANGE);
-			}
-			if (clicks > 100) {
-				mainFrame.getContentPane().setBackground(Color.red);
-				JOptionPane.showMessageDialog(null, LocalDateTime.now());
-			}
+			click_bttn.setFont(new Font("FONT", Font.PLAIN, fontsize + 2));
+		}
+		if (clicks >= 100) {
+			mainFrame.getContentPane().setBackground(Color.red);
+			JOptionPane.showMessageDialog(null, "You reached 100 clicks at " + Calendar.getInstance().getTime());
+		}
+		else if (clicks >= 75 && clicks < 100) {
+			mainFrame.getContentPane().setBackground(Color.orange);
+		}
+		else if (clicks >= 50 && clicks < 75) {
+			mainFrame.getContentPane().setBackground(Color.yellow);
+		}
+		else if (clicks >= 25 && clicks < 50) {
+			mainFrame.getContentPane().setBackground(Color.green);
 		}
 		
 	}
