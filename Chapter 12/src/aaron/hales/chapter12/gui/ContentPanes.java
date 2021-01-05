@@ -6,6 +6,7 @@ import javax.swing.*;
 public class ContentPanes {
 	JFrame topRightPanel;
 	JPanel contentPane;
+	JFrame myFrame;
 	
 	public ContentPanes() {
 		myFrame = new JFrame();
@@ -19,7 +20,7 @@ public class ContentPanes {
 		BorderLayout border = new BorderLayout();
 		contentPane.setLayout(grid);
 		
-		// child JPanel for th top area
+		// child JPanel for the top area
 		JPanel topLeftPanel = new JPanel(grid);
 		JPanel topRightPanel = new JPanel(border);
 		JPanel bottomLeftPanel = new JPanel();
@@ -36,7 +37,7 @@ public class ContentPanes {
 		topRightPanel.add(new JButton("button 3"), border.LINE_START);
 		topRightPanel.add(new JButton("button 4"), border.LINE_END);
 		
-		
+		//bottomLeftPanel.add(new JButton("button 1"))
 		
 		
 		contentPane.add(topLeftPanel);
